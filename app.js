@@ -19,7 +19,7 @@ var session      = require('express-session');
 var configDB = require('./config/database.js');
 var compression = require('compression');
 // configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+mongoose.connect(process.env.MONGODB_URI ||configDB.url); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
 app.use(compression()); //Compress all routes
